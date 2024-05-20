@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "9ab8c789-28c2-4972-b82f-d86da90f8325",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30152301"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone\"     : \"+201095610720\",\r\n    \"password\"  : \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{USER_URL}}auth/login",
+					"host": [
+						"{{USER_URL}}auth"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "bearer {{USER_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{USER_URL}}auth/logout",
+					"host": [
+						"{{USER_URL}}auth"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "Mohamed",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "+201095610720",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "latitude",
+							"value": "41.40338",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "2.174030",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/F:/هنا/تصميم بدون عنوان.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{USER_URL}}auth/register",
+					"host": [
+						"{{USER_URL}}auth"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "bearer {{USER_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "code",
+							"value": "50009",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{USER_URL}}auth/verify-phone",
+					"host": [
+						"{{USER_URL}}auth"
+					],
+					"path": [
+						"verify-phone"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
